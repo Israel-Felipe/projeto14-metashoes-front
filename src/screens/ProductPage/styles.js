@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const View = styled.div`
   background-color: #000000;
-  height: 100vh;
+  height: 50vh;
 `;
 
 export const ViewWhite = styled.div`
@@ -22,6 +22,14 @@ export const ContainerTittleProduct = styled.div`
   align-items: flex-start;
   margin-top: 10vh;
   margin-left: 8vh;
+  @media only screen and (max-width: 935px) {
+    margin-top: 4vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const TittleProduct = styled.h1`
@@ -35,6 +43,11 @@ export const TittleProduct = styled.h1`
 
   -webkit-text-stroke: 0.5px #b543b9;
   text-shadow: 0px 4px 4px #b543b9;
+  @media only screen and (max-width: 935px) {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 10%;
+  }
 `;
 
 export const PriceProduct = styled.h2`
@@ -47,6 +60,9 @@ export const PriceProduct = styled.h2`
   color: #74e6e9;
   -webkit-text-stroke: 0.5px #000000;
   text-shadow: 0px 4px 4px #74e6e9;
+  @media only screen and (max-width: 935px) {
+    font-size: 25px;
+  }
 `;
 
 export const TittleDescription = styled.h3`
@@ -67,6 +83,9 @@ export const ContainerTextDescription = styled.div`
   align-items: flex-start;
   margin-top: 7vh;
   margin-left: 8vh;
+  @media only screen and (max-width: 935px) {
+    display: none;
+  }
 `;
 
 export const TextDescription = styled.h4`
@@ -83,6 +102,7 @@ export const ContainerTop = styled.div`
   justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 80px;
 `;
 
 export const ContainerBottom = styled.div`
@@ -100,6 +120,23 @@ export const ContainerButtons = styled.div`
   align-items: flex-start;
   margin-top: 10vh;
   margin-right: 10vh;
+  @media only screen and (max-width: 935px) {
+    display: none;
+  }
+`;
+
+export const ContainerButtonsResponsive = styled.div`
+  display: none;
+  @media only screen and (max-width: 935px) {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10vh;
+    margin-right: auto;
+    margin-left: auto;
+  }
 `;
 
 export const ButtonView = styled.div`
@@ -116,9 +153,11 @@ export const ButtonView = styled.div`
   font-weight: 800;
   font-size: 13px;
   display: flex;
-  align-items: center;
   cursor: pointer;
   color: #ffffff;
+  @media only screen and (max-width: 935px) {
+    height: 40px;
+  }
 `;
 
 export const ButtonBuyView = styled.div`
@@ -135,7 +174,6 @@ export const ButtonBuyView = styled.div`
   font-weight: 800;
   font-size: 13px;
   display: flex;
-  align-items: center;
   justify-content: center;
   color: #ffffff;
 
@@ -162,4 +200,9 @@ export const ImageShoe = styled.img`
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
+  @media only screen and (max-width: 935px) {
+    width: 80%;
+    height: 30%;
+    top: 60%;
+  }
 `;

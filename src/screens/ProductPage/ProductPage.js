@@ -5,6 +5,7 @@ import {
   ButtonView,
   ContainerBottom,
   ContainerButtons,
+  ContainerButtonsResponsive,
   ContainerTextDescription,
   ContainerTittleProduct,
   ContainerTop,
@@ -48,6 +49,17 @@ export default function ProductPage() {
                 não só sentissem o amortecimento do Air, mas pudessem vê-lo.
               </TextDescription>
             </ContainerTextDescription>
+            <ContainerButtonsResponsive>
+              <ButtonView>Selecione o tamanho</ButtonView>
+              <ButtonView>Selecione a cor</ButtonView>
+              <ButtonView>Selecione a quantidade</ButtonView>
+              <ButtonBuyView>
+                Adicione ao carrinho
+                <IconButon>
+                  <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
+                </IconButon>
+              </ButtonBuyView>
+            </ContainerButtonsResponsive>
             <ContainerButtons>
               <ButtonBuyView>
                 Adicione ao carrinho
