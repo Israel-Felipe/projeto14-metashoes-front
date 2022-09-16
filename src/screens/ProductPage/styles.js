@@ -206,3 +206,29 @@ export const ImageShoe = styled.img`
     top: 60%;
   }
 `;
+
+export const SelectDropDown = styled.select`
+  background: #b543b9;
+  border-radius: 50px;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 13px;
+  display: flex;
+  cursor: pointer;
+  color: white;
+  padding-left: 10px;
+  &::placeholder {
+    color: red;
+  }
+  @media only screen and (max-width: 935px) {
+    height: 40px;
+    z-index: 1;
+  }
+`;

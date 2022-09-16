@@ -1,8 +1,11 @@
+import React from "react";
+
+import { addProductToCar } from "../../services/requests";
+
 import TopBar from "../../components/TopBar/TopBar";
 
 import {
   ButtonBuyView,
-  ButtonView,
   ContainerBottom,
   ContainerButtons,
   ContainerButtonsResponsive,
@@ -12,6 +15,7 @@ import {
   IconButon,
   ImageShoe,
   PriceProduct,
+  SelectDropDown,
   TextDescription,
   TittleDescription,
   TittleProduct,
@@ -19,41 +23,149 @@ import {
   ViewWhite,
 } from "./styles";
 
-const response = [{ img: "https://images2.imgbox.com/91/42/BhGbC610_o.png" }];
+const response = {
+  idProduct: "123ABC",
+  img: "https://images2.imgbox.com/91/42/BhGbC610_o.png",
+  name: "Tênis Nike Air Max Excee Masculino",
+  price: "400,00",
+  description:
+    "A revolucionária tecnologia Air apareceu pela primeira vez nos calçados Nike em 1978. Em 1987, o Air Max 1 estreou com a tecnologia Air visível no seu calcanhar, permitindo que os fãs não só sentissem o amortecimento do Air, mas pudessem vê-lo.",
+};
+
+async function addToCar(size, color, quantity, idProduct, name) {
+  console.log(size, quantity, color);
+  if (!size || !color || !quantity) {
+    alert("Selecione a cor, quantidade e cor do tênis");
+    return;
+  }
+
+  const body = {
+    idProduct,
+    name,
+    size,
+    color,
+    quantity,
+  };
+
+  try {
+    await addProductToCar(body, "123");
+  } catch (error) {
+    console.log(error);
+    alert("algo deu errado");
+  }
+}
 
 export default function ProductPage() {
+  const [size, setSize] = React.useState("");
+  const [color, setColor] = React.useState("");
+  const [quantity, setQuantity] = React.useState("");
+  const [name, setName] = React.useState("");
+  const [idProduct, setIdProduct] = React.useState("");
+
+  React.useEffect(() => {
+    setName(response.name);
+    setIdProduct(response.idProduct);
+  }, []);
+
   return (
     <>
       <View>
         <TopBar />
-        <ImageShoe src={response[0].img} />
+        <ImageShoe src={response.img} />
         <ContainerTop>
           <ContainerTittleProduct>
-            <TittleProduct>Tênis Nike Air Max Excee Masculino</TittleProduct>
-            <PriceProduct>R$ 400.00</PriceProduct>
+            <TittleProduct>{response.name}</TittleProduct>
+            <PriceProduct>R$ {response.price}</PriceProduct>
           </ContainerTittleProduct>
           <ContainerButtons>
-            <ButtonView>Selecione o tamanho</ButtonView>
-            <ButtonView>Selecione a cor</ButtonView>
-            <ButtonView>Selecione a quantidade</ButtonView>
+            <SelectDropDown
+              value={size}
+              onChange={(e) => setSize(e.target.value)}
+            >
+              <option disabled={size ? true : false}>
+                Selecione o tamanho
+              </option>
+              <option value="36">36</option>
+              <option value="37">37</option>
+              <option value="38">38</option>
+              <option value="39">39</option>
+              <option value="40">40</option>
+              <option value="41">41</option>
+              <option value="42">42</option>
+              <option value="43">43</option>
+              <option value="44">44</option>
+            </SelectDropDown>
+            <SelectDropDown
+              value={color}
+              onChange={(e) => setColor(e.target.value)}
+            >
+              <option disabled={color ? true : false}>Selecione a cor</option>
+              <option value="Rosa">Rosa</option>
+              <option value="Vermelho">Vermelho</option>
+              <option value="Preto">Preto</option>
+              <option value="Branco">Branco</option>
+            </SelectDropDown>
+            <SelectDropDown
+              value={quantity}
+              onChange={(e) => setQuantity(e.target.value)}
+            >
+              <option disabled={quantity ? true : false}>
+                Selecione a quantidade
+              </option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </SelectDropDown>
           </ContainerButtons>
         </ContainerTop>
         <ViewWhite>
           <ContainerBottom>
             <ContainerTextDescription>
               <TittleDescription>Descrição</TittleDescription>
-              <TextDescription>
-                A revolucionária tecnologia Air apareceu pela primeira vez nos
-                calçados Nike em 1978. Em 1987, o Air Max 1 estreou com a
-                tecnologia Air visível no seu calcanhar, permitindo que os fãs
-                não só sentissem o amortecimento do Air, mas pudessem vê-lo.
-              </TextDescription>
+              <TextDescription>{response.description}</TextDescription>
             </ContainerTextDescription>
             <ContainerButtonsResponsive>
-              <ButtonView>Selecione o tamanho</ButtonView>
-              <ButtonView>Selecione a cor</ButtonView>
-              <ButtonView>Selecione a quantidade</ButtonView>
-              <ButtonBuyView>
+              <SelectDropDown
+                value={size}
+                onChange={(e) => setSize(e.target.value)}
+              >
+                <option disabled={size ? true : false}>
+                  Selecione o tamanho
+                </option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+              </SelectDropDown>
+              <SelectDropDown
+                value={color}
+                onChange={(e) => setColor(e.target.value)}
+              >
+                <option disabled={color ? true : false}>Selecione a cor</option>
+                <option value="Rosa">Rosa</option>
+                <option value="Vermelho">Vermelho</option>
+                <option value="Preto">Preto</option>
+                <option value="Branco">Branco</option>
+              </SelectDropDown>
+              <SelectDropDown
+                value={quantity}
+                onChange={(e) => setQuantity(e.target.value)}
+              >
+                <option disabled={quantity ? true : false}>
+                  Selecione a quantidade
+                </option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+              </SelectDropDown>
+              <ButtonBuyView
+                onClick={() => addToCar(size, color, quantity, idProduct, name)}
+              >
                 Adicione ao carrinho
                 <IconButon>
                   <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
@@ -61,7 +173,9 @@ export default function ProductPage() {
               </ButtonBuyView>
             </ContainerButtonsResponsive>
             <ContainerButtons>
-              <ButtonBuyView>
+              <ButtonBuyView
+                onClick={() => addToCar(size, color, quantity, idProduct, name)}
+              >
                 Adicione ao carrinho
                 <IconButon>
                   <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
