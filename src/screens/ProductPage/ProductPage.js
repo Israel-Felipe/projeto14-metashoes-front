@@ -33,7 +33,6 @@ const response = {
 };
 
 async function addToCar(size, color, quantity, idProduct, name) {
-  console.log(size, quantity, color);
   if (!size || !color || !quantity) {
     alert("Selecione a cor, quantidade e cor do tênis");
     return;
@@ -49,8 +48,8 @@ async function addToCar(size, color, quantity, idProduct, name) {
 
   try {
     await addProductToCar(body, "123");
+    alert("Item adicionado ao carrinho");
   } catch (error) {
-    console.log(error);
     alert("algo deu errado");
   }
 }
