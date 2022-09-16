@@ -10,6 +10,7 @@ export const Bar = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 2;
 `;
 
 export const ContainerLogo = styled.div`
