@@ -7,6 +7,9 @@ export const Bar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
 `;
 
 export const ContainerLogo = styled.div`
@@ -14,6 +17,10 @@ export const ContainerLogo = styled.div`
   flex-direction: column;
   align-items: center;
   margin-left: 5%;
+  @media only screen and (max-width: 935px) {
+    margin-left: auto;
+    margin-right: auto;
+  }
 `;
 
 export const TittleLogo = styled.h1`
@@ -41,6 +48,9 @@ export const ContainerRoutes = styled.div`
   margin-right: 5%;
   display: flex;
   align-items: center;
+  @media only screen and (max-width: 935px) {
+    margin-right: 0;
+  }
 `;
 
 export const TextRoutes = styled.h3`
@@ -54,10 +64,23 @@ export const TextRoutes = styled.h3`
   text-shadow: 0px 4px 4px #171717;
   margin-right: 30px;
   cursor: pointer;
+
+  @media only screen and (max-width: 935px) {
+    display: none;
+  }
 `;
 
 export const Icon = styled.div`
   color: white;
   font-size: 30px;
   margin-right: 30px;
+  @media only screen and (max-width: 935px) {
+    display: none;
+  }
+`;
+
+export const IconMarket = styled.div`
+  color: white;
+  font-size: 30px;
+  margin-right: 20px;
 `;

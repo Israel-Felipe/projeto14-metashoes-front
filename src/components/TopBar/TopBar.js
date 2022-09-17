@@ -3,6 +3,7 @@ import {
   ContainerLogo,
   ContainerRoutes,
   Icon,
+  IconMarket,
   SubTittleLogo,
   TextRoutes,
   TittleLogo,
@@ -22,9 +23,9 @@ export default function TopBar() {
           <Icon>
             <ion-icon name="person-circle-sharp"></ion-icon>
           </Icon>
-          <Icon>
+          <IconMarket>
             <ion-icon name="cart-sharp"></ion-icon>
-          </Icon>
+          </IconMarket>
         </ContainerRoutes>
       </Bar>
     </>
