@@ -80,6 +80,7 @@ export const ContainerShoes = styled.div`
   border-radius: 20px;
   padding-bottom: 30px;
   margin-right: 20px;
+  width: 180px;
 `;
 
 export const ViewProducts = styled.div`
@@ -101,6 +102,21 @@ export const TittleShoes = styled.h1`
   text-align: center;
   margin-top: -20px;
   color: #ffffff;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+`;
+
+export const TittleProduct = styled.h1`
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 15px;
+  text-align: center;
+  color: #ffffff;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const DescriptionShoes = styled.h2`
@@ -118,4 +134,21 @@ export const ContainerIcon = styled.div`
   font-size: 20px;
   padding-left: 20px;
   cursor: pointer;
+`;
+
+export const ContainerEmpty = styled.div`
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const TitleEmpty = styled.h2`
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+  color: black;
 `;

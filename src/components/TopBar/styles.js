@@ -75,6 +75,7 @@ export const Icon = styled.div`
   color: white;
   font-size: 30px;
   margin-right: 30px;
+  cursor: pointer;
   @media only screen and (max-width: 935px) {
     display: none;
   }
@@ -84,4 +85,5 @@ export const IconMarket = styled.div`
   color: white;
   font-size: 30px;
   margin-right: 20px;
+  cursor: pointer;
 `;

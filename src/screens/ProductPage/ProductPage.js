@@ -1,6 +1,6 @@
 import React from "react";
 
-import { addProductToCar } from "../../services/requests";
+import { addProductToCar, especifyProduct } from "../../services/requests";
 
 import TopBar from "../../components/TopBar/TopBar";
 
@@ -23,16 +23,7 @@ import {
   ViewWhite,
 } from "./styles";
 
-const response = {
-  idProduct: "123ABC",
-  img: "https://images2.imgbox.com/91/42/BhGbC610_o.png",
-  name: "Tênis Nike Air Max Excee Masculino",
-  price: "400,00",
-  description:
-    "A revolucionária tecnologia Air apareceu pela primeira vez nos calçados Nike em 1978. Em 1987, o Air Max 1 estreou com a tecnologia Air visível no seu calcanhar, permitindo que os fãs não só sentissem o amortecimento do Air, mas pudessem vê-lo.",
-};
-
-async function addToCar(size, color, quantity, idProduct, name) {
+async function addToCar(size, color, quantity, idProduct) {
   if (!size || !color || !quantity) {
     alert("Selecione a cor, quantidade e cor do tênis");
     return;
@@ -40,7 +31,6 @@ async function addToCar(size, color, quantity, idProduct, name) {
 
   const body = {
     idProduct,
-    name,
     size,
     color,
     quantity,
@@ -50,31 +40,56 @@ async function addToCar(size, color, quantity, idProduct, name) {
     await addProductToCar(body, "123");
     alert("Item adicionado ao carrinho");
   } catch (error) {
-    alert("algo deu errado");
+    alert(`${error.response.data.message}`);
   }
 }
+
+const response = {
+  idProduct: "123ABC",
+  img: "https://images2.imgbox.com/91/42/BhGbC610_o.png",
+  name: "Tênis Nike Air Max Excee Masculino",
+  price: "400,00",
+  description:
+    "A revolucionária tecnologia Air apareceu pela primeira vez nos calçados Nike em 1978. Em 1987, o Air Max 1 estreou com a tecnologia Air visível no seu calcanhar, permitindo que os fãs não só sentissem o amortecimento do Air, mas pudessem vê-lo.",
+};
 
 export default function ProductPage() {
   const [size, setSize] = React.useState("");
   const [color, setColor] = React.useState("");
   const [quantity, setQuantity] = React.useState("");
   const [name, setName] = React.useState("");
+  const [price, setPrice] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [img, setImg] = React.useState("");
   const [idProduct, setIdProduct] = React.useState("");
 
+  async function getInfosPage() {
+    try {
+      const promise = await especifyProduct("63252fad95acc5a7ff5e777e");
+      return promise;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   React.useEffect(() => {
+    //const response = getInfosPage();
     setName(response.name);
     setIdProduct(response.idProduct);
+    setPrice(response.price);
+    setImg(response.img);
+    setDescription(response.description);
   }, []);
 
   return (
     <>
       <View>
         <TopBar />
-        <ImageShoe src={response.img} />
+        <ImageShoe src={img} />
         <ContainerTop>
           <ContainerTittleProduct>
-            <TittleProduct>{response.name}</TittleProduct>
-            <PriceProduct>R$ {response.price}</PriceProduct>
+            <TittleProduct>{name}</TittleProduct>
+            <PriceProduct>R$ {price}</PriceProduct>
           </ContainerTittleProduct>
           <ContainerButtons>
             <SelectDropDown
@@ -121,7 +136,7 @@ export default function ProductPage() {
           <ContainerBottom>
             <ContainerTextDescription>
               <TittleDescription>Descrição</TittleDescription>
-              <TextDescription>{response.description}</TextDescription>
+              <TextDescription>{description}</TextDescription>
             </ContainerTextDescription>
             <ContainerButtonsResponsive>
               <SelectDropDown
@@ -163,7 +178,7 @@ export default function ProductPage() {
                 <option value="3">3</option>
               </SelectDropDown>
               <ButtonBuyView
-                onClick={() => addToCar(size, color, quantity, idProduct, name)}
+                onClick={() => addToCar(size, color, quantity, idProduct)}
               >
                 Adicione ao carrinho
                 <IconButon>
@@ -173,7 +188,7 @@ export default function ProductPage() {
             </ContainerButtonsResponsive>
             <ContainerButtons>
               <ButtonBuyView
-                onClick={() => addToCar(size, color, quantity, idProduct, name)}
+                onClick={() => addToCar(size, color, quantity, idProduct)}
               >
                 Adicione ao carrinho
                 <IconButon>
