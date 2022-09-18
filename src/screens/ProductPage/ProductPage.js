@@ -40,12 +40,13 @@ async function addToCar(size, color, quantity, idProduct) {
     await addProductToCar(body, "123");
     alert("Item adicionado ao carrinho");
   } catch (error) {
+    console.log(error);
     alert(`${error.response.data.message}`);
   }
 }
 
 const response = {
-  idProduct: "123ABC",
+  idProduct: "6326246b20cf4f9d82b9e595",
   img: "https://images2.imgbox.com/91/42/BhGbC610_o.png",
   name: "Tênis Nike Air Max Excee Masculino",
   price: "400,00",
@@ -63,9 +64,9 @@ export default function ProductPage() {
   const [img, setImg] = React.useState("");
   const [idProduct, setIdProduct] = React.useState("");
 
-  async function getInfosPage() {
+  async function getInfosPage(id) {
     try {
-      const promise = await especifyProduct("63252fad95acc5a7ff5e777e");
+      const promise = await especifyProduct(id);
       return promise;
     } catch (error) {
       console.log(error);
