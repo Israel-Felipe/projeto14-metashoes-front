@@ -24,13 +24,18 @@ import {
   getProductFromCar,
 } from "../../services/requests";
 
+import { ThreeDots } from "react-loader-spinner";
+
 export default function MarketPage() {
   const [listOfProducts, setListOfProducts] = React.useState([]);
   const [totalPrice, setTotalPrice] = React.useState(0);
+  const [loading, setLoading] = React.useState(false);
 
   async function getItemsCar(token) {
     try {
-      let response = await getProductFromCar("123");
+      let response = await getProductFromCar(
+        "cc6b1d17-4a32-4544-ad18-aa4493bc1219"
+      );
       setListOfProducts(response.data);
       let priceTotal = 0;
       response.data.forEach((element) => {
@@ -43,11 +48,14 @@ export default function MarketPage() {
   }
 
   async function removeItemsCar(id, token) {
+    setLoading(true);
     try {
-      await removeProductFromCar(id, "123");
+      await removeProductFromCar(id, "cc6b1d17-4a32-4544-ad18-aa4493bc1219");
       getItemsCar();
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   }
 
@@ -64,7 +72,13 @@ export default function MarketPage() {
             listOfProducts.map((item, index) => (
               <ContainerShoes key={index}>
                 <ContainerIcon onClick={() => removeItemsCar(item.idProduct)}>
-                  <ion-icon name="trash-outline"></ion-icon>
+                  {loading ? (
+                    <ThreeDots color="white" height={40} width={40} />
+                  ) : (
+                    <>
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </>
+                  )}
                 </ContainerIcon>
                 <ImageShoes src={item.img} />
                 <TittleProduct>{item.name}</TittleProduct>

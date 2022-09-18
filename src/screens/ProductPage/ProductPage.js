@@ -1,6 +1,6 @@
 import React from "react";
 
-import { addProductToCar, especifyProduct } from "../../services/requests";
+import { addProductToCar } from "../../services/requests";
 
 import TopBar from "../../components/TopBar/TopBar";
 
@@ -23,30 +23,10 @@ import {
   ViewWhite,
 } from "./styles";
 
-async function addToCar(size, color, quantity, idProduct) {
-  if (!size || !color || !quantity) {
-    alert("Selecione a cor, quantidade e cor do tênis");
-    return;
-  }
-
-  const body = {
-    idProduct,
-    size,
-    color,
-    quantity,
-  };
-
-  try {
-    await addProductToCar(body, "123");
-    alert("Item adicionado ao carrinho");
-  } catch (error) {
-    console.log(error);
-    alert(`${error.response.data.message}`);
-  }
-}
+import { ThreeDots } from "react-loader-spinner";
 
 const response = {
-  idProduct: "6326246b20cf4f9d82b9e595",
+  idProduct: "63252eb595acc5a7ff5e777d",
   img: "https://images2.imgbox.com/91/42/BhGbC610_o.png",
   name: "Tênis Nike Air Max Excee Masculino",
   price: "400,00",
@@ -63,18 +43,39 @@ export default function ProductPage() {
   const [description, setDescription] = React.useState("");
   const [img, setImg] = React.useState("");
   const [idProduct, setIdProduct] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
 
-  async function getInfosPage(id) {
+  async function addToCar(size, color, quantity, idProduct) {
+    if (!size || !color || !quantity) {
+      alert("Selecione a cor, quantidade e cor do tênis");
+      return;
+    }
+
+    setLoading(true);
+
+    const body = {
+      idProduct,
+      size,
+      color,
+      quantity,
+    };
+
     try {
-      const promise = await especifyProduct(id);
-      return promise;
+      let response = await addProductToCar(
+        body,
+        "c9989776-9949-40fe-8962-52bda1f4bded"
+      );
+      alert(`${response.data.message}`);
+      console.log(response);
+      setLoading(false);
     } catch (error) {
       console.log(error);
+      alert(`${error.response.data.message}`);
+      setLoading(false);
     }
   }
 
   React.useEffect(() => {
-    //const response = getInfosPage();
     setName(response.name);
     setIdProduct(response.idProduct);
     setPrice(response.price);
@@ -181,20 +182,32 @@ export default function ProductPage() {
               <ButtonBuyView
                 onClick={() => addToCar(size, color, quantity, idProduct)}
               >
-                Adicione ao carrinho
-                <IconButon>
-                  <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
-                </IconButon>
+                {loading ? (
+                  <ThreeDots color="white" height={40} width={40} />
+                ) : (
+                  <>
+                    Adicione ao carrinho
+                    <IconButon>
+                      <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
+                    </IconButon>
+                  </>
+                )}
               </ButtonBuyView>
             </ContainerButtonsResponsive>
             <ContainerButtons>
               <ButtonBuyView
                 onClick={() => addToCar(size, color, quantity, idProduct)}
               >
-                Adicione ao carrinho
-                <IconButon>
-                  <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
-                </IconButon>
+                {loading ? (
+                  <ThreeDots color="white" height={40} width={40} />
+                ) : (
+                  <>
+                    Adicione ao carrinho
+                    <IconButon>
+                      <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
+                    </IconButon>
+                  </>
+                )}
               </ButtonBuyView>
             </ContainerButtons>
           </ContainerBottom>
