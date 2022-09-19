@@ -24,7 +24,7 @@ export default function TopBar() {
         <ContainerRoutes>
           <TextRoutes onClick={() => navigate("/home")}>Home</TextRoutes>
           <TextRoutes onClick={() => navigate("/sobre")}>Sobre</TextRoutes>
-          <Icon onClick={() => navigate("/login")}>
+          <Icon onClick={() => navigate("/")}>
             <ion-icon name="person-circle-sharp"></ion-icon>
           </Icon>
           <IconMarket onClick={() => navigate("/carrinho")}>

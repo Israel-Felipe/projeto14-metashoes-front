@@ -20,7 +20,7 @@ export default function App() {
           <Route path="/carrinho" element={<MarketPage />} />
           <Route path="/sobre" element={<ConstructionPage />} />
           <Route path="/cadastro" element={<SignUpPage />} />
-          <Route path="/login" element={<SignInPage />} />
+          <Route path="/" element={<SignInPage />} />
         </Routes>
       </BrowserRouter>
     </>
