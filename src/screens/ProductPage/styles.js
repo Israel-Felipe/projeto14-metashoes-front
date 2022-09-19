@@ -230,3 +230,11 @@ export const SelectDropDown = styled.select`
     z-index: 1;
   }
 `;
+
+export const ImageLoading = styled.img`
+  z-index: 1;
+  height: 30%;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+`;

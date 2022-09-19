@@ -28,6 +28,10 @@ export const ContainerShoes = styled.div`
   flex-direction: column;
   cursor: pointer;
   height: 300px;
+  &:hover {
+    transform: scale(1.1);
+  }
+  transition: all 0.2s;
 `;
 
 export const ImageShoes = styled.img`
@@ -57,4 +61,18 @@ export const DescriptionShoes = styled.h2`
   padding-left: 10px;
   margin-top: 15px;
   color: #ffffff;
+`;
+
+export const ImageLoading = styled.img`
+  z-index: 1;
+  height: 30%;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+`;
+
+export const ContainerLoading = styled.div`
+  height: 100vh;
+  background-color: #000000;
+  padding-top: 80px;
 `;
