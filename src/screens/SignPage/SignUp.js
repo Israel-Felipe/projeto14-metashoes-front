@@ -41,7 +41,7 @@ export default function SignUpPage() {
 
     postSignUp(cadastroAPI)
       .then(() => {
-        navigate("/login");
+        navigate("/");
       })
       .catch(() => {
         setIsDisabled(false);

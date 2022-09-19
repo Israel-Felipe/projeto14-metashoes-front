@@ -87,6 +87,8 @@ export const ViewProducts = styled.div`
   width: 80%;
   overflow-x: scroll;
   display: flex;
+  margin-top: 30px;
+  margin-bottom: 30px;
 `;
 
 export const ImageShoes = styled.img`
@@ -134,6 +136,7 @@ export const ContainerIcon = styled.div`
   font-size: 20px;
   padding-left: 20px;
   cursor: pointer;
+  margin-top: 10px;
 `;
 
 export const ContainerEmpty = styled.div`
