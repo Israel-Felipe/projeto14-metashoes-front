@@ -23,8 +23,10 @@ import {
   ViewWhite,
 } from "./styles";
 
+import { ThreeDots } from "react-loader-spinner";
+
 const response = {
-  idProduct: "123ABC",
+  idProduct: "63252eb595acc5a7ff5e777d",
   img: "https://images2.imgbox.com/91/42/BhGbC610_o.png",
   name: "Tênis Nike Air Max Excee Masculino",
   price: "400,00",
@@ -32,49 +34,64 @@ const response = {
     "A revolucionária tecnologia Air apareceu pela primeira vez nos calçados Nike em 1978. Em 1987, o Air Max 1 estreou com a tecnologia Air visível no seu calcanhar, permitindo que os fãs não só sentissem o amortecimento do Air, mas pudessem vê-lo.",
 };
 
-async function addToCar(size, color, quantity, idProduct, name) {
-  if (!size || !color || !quantity) {
-    alert("Selecione a cor, quantidade e cor do tênis");
-    return;
-  }
-
-  const body = {
-    idProduct,
-    name,
-    size,
-    color,
-    quantity,
-  };
-
-  try {
-    await addProductToCar(body, "123");
-    alert("Item adicionado ao carrinho");
-  } catch (error) {
-    alert("algo deu errado");
-  }
-}
-
 export default function ProductPage() {
   const [size, setSize] = React.useState("");
   const [color, setColor] = React.useState("");
   const [quantity, setQuantity] = React.useState("");
   const [name, setName] = React.useState("");
+  const [price, setPrice] = React.useState("");
+  const [description, setDescription] = React.useState("");
+  const [img, setImg] = React.useState("");
   const [idProduct, setIdProduct] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
+
+  async function addToCar(size, color, quantity, idProduct) {
+    if (!size || !color || !quantity) {
+      alert("Selecione a cor, quantidade e cor do tênis");
+      return;
+    }
+
+    setLoading(true);
+
+    const body = {
+      idProduct,
+      size,
+      color,
+      quantity,
+    };
+
+    try {
+      let response = await addProductToCar(
+        body,
+        "c9989776-9949-40fe-8962-52bda1f4bded"
+      );
+      alert(`${response.data.message}`);
+      console.log(response);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      alert(`${error.response.data.message}`);
+      setLoading(false);
+    }
+  }
 
   React.useEffect(() => {
     setName(response.name);
     setIdProduct(response.idProduct);
+    setPrice(response.price);
+    setImg(response.img);
+    setDescription(response.description);
   }, []);
 
   return (
     <>
       <View>
         <TopBar />
-        <ImageShoe src={response.img} />
+        <ImageShoe src={img} />
         <ContainerTop>
           <ContainerTittleProduct>
-            <TittleProduct>{response.name}</TittleProduct>
-            <PriceProduct>R$ {response.price}</PriceProduct>
+            <TittleProduct>{name}</TittleProduct>
+            <PriceProduct>R$ {price}</PriceProduct>
           </ContainerTittleProduct>
           <ContainerButtons>
             <SelectDropDown
@@ -121,7 +138,7 @@ export default function ProductPage() {
           <ContainerBottom>
             <ContainerTextDescription>
               <TittleDescription>Descrição</TittleDescription>
-              <TextDescription>{response.description}</TextDescription>
+              <TextDescription>{description}</TextDescription>
             </ContainerTextDescription>
             <ContainerButtonsResponsive>
               <SelectDropDown
@@ -163,22 +180,34 @@ export default function ProductPage() {
                 <option value="3">3</option>
               </SelectDropDown>
               <ButtonBuyView
-                onClick={() => addToCar(size, color, quantity, idProduct, name)}
+                onClick={() => addToCar(size, color, quantity, idProduct)}
               >
-                Adicione ao carrinho
-                <IconButon>
-                  <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
-                </IconButon>
+                {loading ? (
+                  <ThreeDots color="white" height={40} width={40} />
+                ) : (
+                  <>
+                    Adicione ao carrinho
+                    <IconButon>
+                      <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
+                    </IconButon>
+                  </>
+                )}
               </ButtonBuyView>
             </ContainerButtonsResponsive>
             <ContainerButtons>
               <ButtonBuyView
-                onClick={() => addToCar(size, color, quantity, idProduct, name)}
+                onClick={() => addToCar(size, color, quantity, idProduct)}
               >
-                Adicione ao carrinho
-                <IconButon>
-                  <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
-                </IconButon>
+                {loading ? (
+                  <ThreeDots color="white" height={40} width={40} />
+                ) : (
+                  <>
+                    Adicione ao carrinho
+                    <IconButon>
+                      <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
+                    </IconButon>
+                  </>
+                )}
               </ButtonBuyView>
             </ContainerButtons>
           </ContainerBottom>
