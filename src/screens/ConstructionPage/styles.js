@@ -28,5 +28,5 @@ export const Text = styled.p`
   border: 1px solid #000000;
   text-shadow: 0px 4px 4px #b543b9;
   text-align: center;
-  margin-top: 20px;
+  margin-top: 100px;
 `;

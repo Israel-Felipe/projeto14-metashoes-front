@@ -3,31 +3,36 @@ import styled from "styled-components";
 export const View = styled.div`
   background-color: #000000;
   padding-top: 80px;
+  min-height: 100vh;
+  height: 100%;
+  padding: 140px 15% 0;
 `;
 
 export const ContainerProducts = styled.div`
-  width: 90%;
+  width: 100%;
+  height: 100%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  padding-bottom: 100px;
+  gap: 30px;
+  @media only screen and (max-width: 935px) {
+    justify-content: center;
+  }
 `;
 
 export const ContainerShoes = styled.div`
   background: #b543b9;
-  border: 1px solid #000000;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 20px;
-  padding-bottom: 30px;
-  margin-right: 20px;
-  width: 180px;
-  margin-top: 30px;
+  padding: 5%;
+  width: 300px;
   display: flex;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
-  height: 300px;
+  height: 340px;
+  position: relative;
   &:hover {
     transform: scale(1.1);
   }
@@ -35,32 +40,27 @@ export const ContainerShoes = styled.div`
 `;
 
 export const ImageShoes = styled.img`
-  width: 150px;
-  height: 150px;
-  margin-left: auto;
-  margin-right: auto;
+  width: 90%;
 `;
 
 export const TittleProduct = styled.h1`
   font-family: "Roboto";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: 20px;
   text-align: center;
-  color: #ffffff;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
+  color: #74e6e9;
+  width: 90%;
+  margin: 5% 0;
+  line-height: 30px;
 `;
 
 export const DescriptionShoes = styled.h2`
   font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  padding-left: 10px;
-  margin-top: 15px;
+  font-weight: 700;
+  font-size: 50px;
   color: #ffffff;
+  position: absolute;
+  bottom: 30px;
 `;
 
 export const ImageLoading = styled.img`
@@ -69,6 +69,9 @@ export const ImageLoading = styled.img`
   position: fixed;
   top: 40%;
   left: 40%;
+  @media only screen and (max-width: 935px) {
+    left: 20%;
+  }
 `;
 
 export const ContainerLoading = styled.div`
