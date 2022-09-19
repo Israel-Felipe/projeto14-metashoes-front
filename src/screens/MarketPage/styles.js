@@ -152,3 +152,11 @@ export const TitleEmpty = styled.h2`
   text-align: center;
   color: black;
 `;
+
+export const ImageLoading = styled.img`
+  z-index: 1;
+  height: 30%;
+  position: fixed;
+  top: 40%;
+  left: 40%;
+`;

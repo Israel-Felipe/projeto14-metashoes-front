@@ -13,7 +13,7 @@ export const Container = styled.div`
   width: 90%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10%;
+  padding-top: 80px;
 `;
 
 export const Text = styled.p`

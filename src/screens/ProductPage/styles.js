@@ -44,7 +44,7 @@ export const TittleProduct = styled.h1`
   -webkit-text-stroke: 0.5px #b543b9;
   text-shadow: 0px 4px 4px #b543b9;
   @media only screen and (max-width: 935px) {
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     margin-top: 10%;
   }
@@ -61,7 +61,7 @@ export const PriceProduct = styled.h2`
   -webkit-text-stroke: 0.5px #000000;
   text-shadow: 0px 4px 4px #74e6e9;
   @media only screen and (max-width: 935px) {
-    font-size: 25px;
+    font-size: 15px;
   }
 `;
 
@@ -193,16 +193,14 @@ export const IconButon = styled.div`
 
 export const ImageShoe = styled.img`
   z-index: 1;
-  width: 40%;
-  height: 50%;
+  height: 30%;
   position: fixed;
   top: 55%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
   @media only screen and (max-width: 935px) {
-    width: 80%;
-    height: 30%;
+    height: 20%;
     top: 60%;
   }
 `;
@@ -231,4 +229,12 @@ export const SelectDropDown = styled.select`
     height: 40px;
     z-index: 1;
   }
+`;
+
+export const ImageLoading = styled.img`
+  z-index: 1;
+  height: 30%;
+  position: fixed;
+  top: 40%;
+  left: 40%;
 `;
