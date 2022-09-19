@@ -34,6 +34,9 @@ export const ContainerShoes = styled.div`
   height: 100px;
   position: relative;
   gap: 20px;
+  @media only screen and (max-width: 935px) {
+    width: 100%;
+  }
 `;
 
 export const ImageShoes = styled.img`
@@ -48,6 +51,10 @@ export const TittleProduct = styled.h1`
   width: 90%;
   margin: 10% 0;
   line-height: 30px;
+  @media only screen and (max-width: 935px) {
+    font-size: 14px;
+    line-height: 15px;
+  }
 `;
 
 export const DescriptionShoes = styled.h2`
@@ -57,6 +64,11 @@ export const DescriptionShoes = styled.h2`
   font-size: 20px;
   color: black;
   bottom: 30px;
+  @media only screen and (max-width: 935px) {
+    font-size: 14px;
+    line-height: 15px;
+    margin-top: -30px;
+  }
 `;
 
 export const ImageLoading = styled.img`
