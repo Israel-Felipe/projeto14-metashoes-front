@@ -17,6 +17,9 @@ export const ContainerProducts = styled.div`
   flex-wrap: wrap;
   padding-bottom: 100px;
   gap: 30px;
+  @media only screen and (max-width: 935px) {
+    justify-content: center;
+  }
 `;
 
 export const ContainerShoes = styled.div`
@@ -66,6 +69,9 @@ export const ImageLoading = styled.img`
   position: fixed;
   top: 40%;
   left: 40%;
+  @media only screen and (max-width: 935px) {
+    left: 20%;
+  }
 `;
 
 export const ContainerLoading = styled.div`

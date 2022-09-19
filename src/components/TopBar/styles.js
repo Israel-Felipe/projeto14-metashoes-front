@@ -21,8 +21,7 @@ export const ContainerLogo = styled.div`
   margin-left: 5%;
   cursor: pointer;
   @media only screen and (max-width: 935px) {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
   }
 `;
 
@@ -30,11 +29,14 @@ export const TittleLogo = styled.h1`
   font-family: "Oswald", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 45px;
   margin-right: 3px;
   color: #ffffff;
   text-shadow: 0px 4px 4px #74e6e9;
   -webkit-text-stroke: 0.5px #b543b9;
+  @media only screen and (max-width: 935px) {
+    font-size: 35px;
+  }
 `;
 
 export const SubTittleLogo = styled.h2`
@@ -42,10 +44,13 @@ export const SubTittleLogo = styled.h2`
   font-family: "Raleway", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 18px;
   color: #fe5fff;
   -webkit-text-stroke: 0.5px #b543b9;
   text-shadow: 0px 4px 4px #000000;
+  @media only screen and (max-width: 935px) {
+    font-size: 13px;
+  }
 `;
 
 export const ContainerRoutes = styled.div`
@@ -80,13 +85,15 @@ export const Icon = styled.div`
   margin-right: 30px;
   cursor: pointer;
   @media only screen and (max-width: 935px) {
-    display: none;
+    font-size: 30px;
   }
 `;
 
 export const IconMarket = styled.div`
   color: white;
   font-size: 50px;
-  margin-right: 20px;
   cursor: pointer;
+  @media only screen and (max-width: 935px) {
+    font-size: 30px;
+  }
 `;

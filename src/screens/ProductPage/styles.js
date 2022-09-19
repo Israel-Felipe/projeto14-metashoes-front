@@ -239,4 +239,7 @@ export const ImageLoading = styled.img`
   position: fixed;
   top: 40%;
   left: 40%;
+  @media only screen and (max-width: 935px) {
+    left: 20%;
+  }
 `;
