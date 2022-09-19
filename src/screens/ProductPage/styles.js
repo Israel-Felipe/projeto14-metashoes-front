@@ -37,7 +37,7 @@ export const TittleProduct = styled.h1`
   font-family: "Roboto";
   font-style: normal;
   font-weight: 800;
-  font-size: 200%;
+  font-size: 150%;
   display: flex;
   align-items: center;
   color: #ffffff;
