@@ -6,6 +6,8 @@ import ProductPage from "./ProductPage/ProductPage";
 import MarketPage from "./MarketPage/MarketPage";
 import HomePage from "./HomePage/HomePage";
 import ConstructionPage from "./ConstructionPage/ConstructionPage";
+import SignUpPage from "./SignPage/SignUp";
+import SignInPage from "./SignPage/SignIn";
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
           <Route path="/produto/:idProduct" element={<ProductPage />} />
           <Route path="/carrinho" element={<MarketPage />} />
           <Route path="/sobre" element={<ConstructionPage />} />
+          <Route path="/cadastro" element={<SignUpPage />} />
+          <Route path="/login" element={<SignInPage />} />
         </Routes>
       </BrowserRouter>
     </>

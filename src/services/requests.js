@@ -2,6 +2,16 @@ import axios from "axios";
 
 const Base_URL = "https://metashoes.herokuapp.com";
 
+function postSignUp(body) {
+  const promise = axios.post(`${Base_URL}/signUp`, body);
+  return promise;
+}
+
+function postSignIn(body) {
+  const promise = axios.post(`${Base_URL}/signIn`, body);
+  return promise;
+}
+
 async function getAllProducts() {
   const promise = await axios.get(`${Base_URL}/produto`);
   return promise;
@@ -46,6 +56,8 @@ async function getProductFromCar(token) {
 }
 
 export {
+  postSignUp,
+  postSignIn,
   addProductToCar,
   removeProductFromCar,
   getProductFromCar,
