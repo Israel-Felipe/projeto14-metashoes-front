@@ -41,7 +41,7 @@ export default function SignUpPage() {
 
     postSignUp(cadastroAPI)
       .then(() => {
-        navigate("/login");
+        navigate("/");
       })
       .catch(() => {
         setIsDisabled(false);
@@ -97,7 +97,7 @@ export default function SignUpPage() {
           <div>Cadastrar</div>
         </button>
 
-        <Link to={`/login`}>
+        <Link to={`/`}>
           <Cadastro disabled={isDisabled}>
             Já tem uma conta? <h2>Faça o login.</h2>
           </Cadastro>
