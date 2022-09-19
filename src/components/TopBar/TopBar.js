@@ -18,13 +18,13 @@ export default function TopBar() {
     <>
       <Bar>
         <ContainerLogo onClick={() => navigate("/home")}>
-          <TittleLogo>Meta Shoes</TittleLogo>
+          <TittleLogo>META SHOES </TittleLogo>
           <SubTittleLogo>E-commerce edition</SubTittleLogo>
         </ContainerLogo>
         <ContainerRoutes>
           <TextRoutes onClick={() => navigate("/home")}>Home</TextRoutes>
           <TextRoutes onClick={() => navigate("/sobre")}>Sobre</TextRoutes>
-          <Icon>
+          <Icon onClick={() => navigate("/login")}>
             <ion-icon name="person-circle-sharp"></ion-icon>
           </Icon>
           <IconMarket onClick={() => navigate("/carrinho")}>

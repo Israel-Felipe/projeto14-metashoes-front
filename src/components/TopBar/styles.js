@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 export const Bar = styled.div`
   background-color: #171717;
-  height: 80px;
+  height: 100px;
   width: 100%;
+  padding: 0 10%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,10 +27,10 @@ export const ContainerLogo = styled.div`
 `;
 
 export const TittleLogo = styled.h1`
-  font-family: "Hermeneus One";
+  font-family: "Oswald", sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: 35px;
+  font-weight: 700;
+  font-size: 50px;
   margin-right: 3px;
   color: #ffffff;
   text-shadow: 0px 4px 4px #74e6e9;
@@ -37,10 +38,11 @@ export const TittleLogo = styled.h1`
 `;
 
 export const SubTittleLogo = styled.h2`
-  font-family: "Hermeneus One";
+  margin-top: 10px;
+  font-family: "Raleway", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 20px;
   color: #fe5fff;
   -webkit-text-stroke: 0.5px #b543b9;
   text-shadow: 0px 4px 4px #000000;
@@ -59,12 +61,12 @@ export const TextRoutes = styled.h3`
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 24px;
   line-height: 23px;
   color: #ffffff;
   -webkit-text-stroke: 0.5px #b543b9;
   text-shadow: 0px 4px 4px #171717;
-  margin-right: 30px;
+  margin-right: 40px;
   cursor: pointer;
 
   @media only screen and (max-width: 935px) {
@@ -74,7 +76,7 @@ export const TextRoutes = styled.h3`
 
 export const Icon = styled.div`
   color: white;
-  font-size: 30px;
+  font-size: 50px;
   margin-right: 30px;
   cursor: pointer;
   @media only screen and (max-width: 935px) {
@@ -84,7 +86,7 @@ export const Icon = styled.div`
 
 export const IconMarket = styled.div`
   color: white;
-  font-size: 30px;
+  font-size: 50px;
   margin-right: 20px;
   cursor: pointer;
 `;

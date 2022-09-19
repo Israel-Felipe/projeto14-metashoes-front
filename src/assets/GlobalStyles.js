@@ -48,7 +48,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a{
+a,href {
     text-decoration: none;
 }
 *{

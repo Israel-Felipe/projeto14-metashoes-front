@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const View = styled.div`
   background-color: #000000;
   height: 50vh;
+  padding: 0 10%;
 `;
 
 export const ViewWhite = styled.div`
@@ -12,6 +13,7 @@ export const ViewWhite = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
+  padding: 0 10%;
 `;
 
 export const ContainerTittleProduct = styled.div`
