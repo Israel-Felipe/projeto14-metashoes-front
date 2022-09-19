@@ -2,6 +2,17 @@ import axios from "axios";
 
 const Base_URL = "https://metashoes.herokuapp.com";
 
+function createHeaders() {
+  const auth = JSON.parse(localStorage.getItem("userLocal"));
+  const cfg = {
+    headers: {
+      Authorization: `Bearer ${auth.token.token}`,
+    },
+  };
+
+  return cfg;
+}
+
 function postSignUp(body) {
   const promise = axios.post(`${Base_URL}/signUp`, body);
   return promise;
@@ -9,6 +20,12 @@ function postSignUp(body) {
 
 function postSignIn(body) {
   const promise = axios.post(`${Base_URL}/signIn`, body);
+  return promise;
+}
+
+function logoutService() {
+  const cfg = createHeaders();
+  const promise = axios.delete(`${Base_URL}/signIn`, cfg);
   return promise;
 }
 
@@ -55,6 +72,18 @@ async function getProductFromCar(token) {
   return promise;
 }
 
+function postProduct(body) {
+  const cfg = createHeaders();
+  const promise = axios.post(`${Base_URL}/admin`, body, cfg);
+  return promise;
+}
+
+function deleteProduct(id) {
+  const cfg = createHeaders();
+  const promise = axios.delete(`${Base_URL}/admin/${id}`, cfg);
+  return promise;
+}
+
 export {
   postSignUp,
   postSignIn,
@@ -63,4 +92,7 @@ export {
   getProductFromCar,
   especifyProduct,
   getAllProducts,
+  logoutService,
+  postProduct,
+  deleteProduct,
 };

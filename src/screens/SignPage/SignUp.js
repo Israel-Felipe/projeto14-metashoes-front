@@ -15,7 +15,7 @@ import {
 
 export default function SignUpPage() {
   const navigate = useNavigate();
-  const auth = JSON.parse(localStorage.getItem("mywallet"));
+  const auth = JSON.parse(localStorage.getItem("userLocal"));
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -100,7 +100,7 @@ export default function SignUpPage() {
             <div>Cadastrar</div>
           </button>
 
-          <Link to={`/`}>
+          <Link to={`/login`}>
             <Cadastro disabled={isDisabled}>
               Já tem uma conta? <h2>Faça o login.</h2>
             </Cadastro>
