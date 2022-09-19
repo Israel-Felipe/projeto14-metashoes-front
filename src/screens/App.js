@@ -24,12 +24,8 @@ export default function App() {
           <Route path="/pagamento" element={<PaymentPage />} />
           <Route path="/sobre" element={<ConstructionPage />} />
           <Route path="/cadastro" element={<SignUpPage />} />
-<<<<<<< HEAD
           <Route path="/login" element={<SignInPage />} />
           <Route path="/admin" element={<AdminPage />} />
-=======
-          <Route path="/" element={<SignInPage />} />
->>>>>>> main
         </Routes>
       </BrowserRouter>
     </>

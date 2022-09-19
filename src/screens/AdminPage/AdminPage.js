@@ -19,7 +19,6 @@ import {
 
 import loadingGif from "../../assets/image/loading-gif.gif";
 import CadastrarProduto from "./CadastrarProduto";
-import DeletarProduto from "./DeletarProduto";
 
 export default function HomePage() {
   const auth = JSON.parse(localStorage.getItem("userLocal"));
@@ -41,6 +40,7 @@ export default function HomePage() {
     try {
       await deleteProduct(name);
       alert("Produto deletado");
+      window.location.reload();
     } catch (error) {
       alert(`${error.response.data.message}`);
     }
@@ -62,8 +62,8 @@ export default function HomePage() {
             <CadastrarProduto />
             <ContainerProducts>
               {listProducts.length > 0 ? (
-                listProducts.map((item) => (
-                  <ContainerShoes>
+                listProducts.map((item, index) => (
+                  <ContainerShoes key={index}>
                     <ImageShoes src={item.img} />
                     <TittleProduct>{item.name}</TittleProduct>
                     <DescriptionShoes>R$ {item.price}</DescriptionShoes>
