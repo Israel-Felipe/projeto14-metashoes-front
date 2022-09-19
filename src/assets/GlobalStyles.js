@@ -55,6 +55,6 @@ a{
     box-sizing: border-box;
 }
 body{
-    font-family: 'Lexend Deca';
+    font-family: 'Roboto';
 }
 `;
