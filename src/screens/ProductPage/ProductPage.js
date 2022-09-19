@@ -43,7 +43,7 @@ export default function ProductPage() {
   let tokenLocal = "";
   if (JSON.parse(localStorage.getItem("userLocal"))) {
     const auth = JSON.parse(localStorage.getItem("userLocal"));
-    tokenLocal = auth.token;
+    tokenLocal = auth.token.token;
   }
 
   const { idProduct } = useParams();
@@ -90,7 +90,8 @@ export default function ProductPage() {
   }, [idProduct]);
 
   if (tokenLocal.length === 0) {
-    return <Navigate to="/" replace={true} />;
+    alert("Você precisa estar logado para comprar");
+    return <Navigate to="/login" replace={true} />;
   } else {
     return (
       <>

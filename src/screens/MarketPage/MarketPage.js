@@ -39,7 +39,7 @@ export default function MarketPage() {
   let tokenLocal = "";
   if (JSON.parse(localStorage.getItem("userLocal"))) {
     const auth = JSON.parse(localStorage.getItem("userLocal"));
-    tokenLocal = auth.token;
+    tokenLocal = auth.token.token;
   }
 
   const navigate = useNavigate();
@@ -76,7 +76,8 @@ export default function MarketPage() {
   }, [tokenLocal]);
 
   if (tokenLocal.length === 0) {
-    return <Navigate to="/" replace={true} />;
+    alert("Você precisa estar logado para comprar");
+    return <Navigate to="/login" replace={true} />;
   } else {
     return (
       <Container>
