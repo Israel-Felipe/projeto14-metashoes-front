@@ -127,7 +127,7 @@ export default function MarketPage() {
                 <InfosPayment>
                   Valor total: R$ {(Number(totalPrice) - 200).toFixed(2)}
                 </InfosPayment>
-                <ButtonBuyView>
+                <ButtonBuyView onClick={() => navigate("/pagamento")}>
                   Finalizar compra
                   <IconButon>
                     <ion-icon name="arrow-forward-circle-sharp"></ion-icon>
