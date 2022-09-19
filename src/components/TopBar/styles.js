@@ -18,6 +18,7 @@ export const ContainerLogo = styled.div`
   flex-direction: column;
   align-items: center;
   margin-left: 5%;
+  cursor: pointer;
   @media only screen and (max-width: 935px) {
     margin-left: auto;
     margin-right: auto;

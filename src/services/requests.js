@@ -2,8 +2,13 @@ import axios from "axios";
 
 const Base_URL = "https://metashoes.herokuapp.com";
 
+async function getAllProducts() {
+  const promise = await axios.get(`${Base_URL}/produto`);
+  return promise;
+}
+
 async function especifyProduct(id) {
-  const promise = await axios.get(`${Base_URL}/produtos/${id}`);
+  const promise = await axios.get(`${Base_URL}/produto/${id}`);
   return promise;
 }
 
@@ -45,4 +50,5 @@ export {
   removeProductFromCar,
   getProductFromCar,
   especifyProduct,
+  getAllProducts,
 };

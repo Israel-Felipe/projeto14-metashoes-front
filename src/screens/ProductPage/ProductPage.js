@@ -1,6 +1,8 @@
 import React from "react";
 
-import { addProductToCar } from "../../services/requests";
+import { useParams } from "react-router-dom";
+
+import { addProductToCar, especifyProduct } from "../../services/requests";
 
 import TopBar from "../../components/TopBar/TopBar";
 
@@ -25,15 +27,6 @@ import {
 
 import { ThreeDots } from "react-loader-spinner";
 
-const response = {
-  idProduct: "63252eb595acc5a7ff5e777d",
-  img: "https://images2.imgbox.com/91/42/BhGbC610_o.png",
-  name: "Tênis Nike Air Max Excee Masculino",
-  price: "400,00",
-  description:
-    "A revolucionária tecnologia Air apareceu pela primeira vez nos calçados Nike em 1978. Em 1987, o Air Max 1 estreou com a tecnologia Air visível no seu calcanhar, permitindo que os fãs não só sentissem o amortecimento do Air, mas pudessem vê-lo.",
-};
-
 export default function ProductPage() {
   const [size, setSize] = React.useState("");
   const [color, setColor] = React.useState("");
@@ -42,10 +35,12 @@ export default function ProductPage() {
   const [price, setPrice] = React.useState("");
   const [description, setDescription] = React.useState("");
   const [img, setImg] = React.useState("");
-  const [idProduct, setIdProduct] = React.useState("");
+  const [id_Product, setId_Product] = React.useState("");
   const [loading, setLoading] = React.useState(false);
 
-  async function addToCar(size, color, quantity, idProduct) {
+  const { idProduct } = useParams();
+
+  async function addToCar(size, color, quantity, id_Product) {
     if (!size || !color || !quantity) {
       alert("Selecione a cor, quantidade e cor do tênis");
       return;
@@ -54,7 +49,7 @@ export default function ProductPage() {
     setLoading(true);
 
     const body = {
-      idProduct,
+      idProduct: id_Product,
       size,
       color,
       quantity,
@@ -66,7 +61,6 @@ export default function ProductPage() {
         "c9989776-9949-40fe-8962-52bda1f4bded"
       );
       alert(`${response.data.message}`);
-      console.log(response);
       setLoading(false);
     } catch (error) {
       console.log(error);
@@ -75,13 +69,23 @@ export default function ProductPage() {
     }
   }
 
+  async function getInfosProduct(id) {
+    try {
+      const promise = await especifyProduct(id);
+      console.log(promise);
+      setName(promise.data.name);
+      setId_Product(promise.data._id);
+      setPrice(promise.data.price);
+      setImg(promise.data.img);
+      setDescription(promise.data.description);
+    } catch (error) {
+      alert(`${error.response.data.message}`);
+    }
+  }
+
   React.useEffect(() => {
-    setName(response.name);
-    setIdProduct(response.idProduct);
-    setPrice(response.price);
-    setImg(response.img);
-    setDescription(response.description);
-  }, []);
+    getInfosProduct(idProduct);
+  }, [idProduct]);
 
   return (
     <>
@@ -180,7 +184,7 @@ export default function ProductPage() {
                 <option value="3">3</option>
               </SelectDropDown>
               <ButtonBuyView
-                onClick={() => addToCar(size, color, quantity, idProduct)}
+                onClick={() => addToCar(size, color, quantity, id_Product)}
               >
                 {loading ? (
                   <ThreeDots color="white" height={40} width={40} />
@@ -196,7 +200,7 @@ export default function ProductPage() {
             </ContainerButtonsResponsive>
             <ContainerButtons>
               <ButtonBuyView
-                onClick={() => addToCar(size, color, quantity, idProduct)}
+                onClick={() => addToCar(size, color, quantity, id_Product)}
               >
                 {loading ? (
                   <ThreeDots color="white" height={40} width={40} />

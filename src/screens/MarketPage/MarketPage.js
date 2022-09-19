@@ -43,7 +43,7 @@ export default function MarketPage() {
       });
       setTotalPrice(priceTotal);
     } catch (error) {
-      console.log(error);
+      alert(`${error.response.data.message}`);
     }
   }
 
@@ -54,7 +54,7 @@ export default function MarketPage() {
       getItemsCar();
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      alert(`${error.response.data.message}`);
       setLoading(false);
     }
   }
