@@ -8,6 +8,7 @@ import HomePage from "./HomePage/HomePage";
 import ConstructionPage from "./ConstructionPage/ConstructionPage";
 import SignUpPage from "./SignPage/SignUp";
 import SignInPage from "./SignPage/SignIn";
+import AdminPage from "./AdminPage/AdminPage";
 
 export default function App() {
   return (
@@ -15,12 +16,14 @@ export default function App() {
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/produto/:idProduct" element={<ProductPage />} />
           <Route path="/carrinho" element={<MarketPage />} />
           <Route path="/sobre" element={<ConstructionPage />} />
           <Route path="/cadastro" element={<SignUpPage />} />
           <Route path="/login" element={<SignInPage />} />
+          <Route path="/admin" element={<AdminPage />} />
         </Routes>
       </BrowserRouter>
     </>

@@ -32,9 +32,10 @@ export default function SignInPage() {
 
     postSignIn(loginAPI)
       .then((res) => {
-        const token = res.data.token;
-        const usuario = res.data.usuario;
-        const infoJSON = JSON.stringify({ token, usuario });
+        const token = res.data;
+        const userName = res.data.user.name;
+        const userEmail = res.data.user.email;
+        const infoJSON = JSON.stringify({ token, userName, userEmail });
         localStorage.setItem("userLocal", infoJSON);
 
         navigate("/home");
