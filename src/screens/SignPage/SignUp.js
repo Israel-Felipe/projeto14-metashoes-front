@@ -44,6 +44,9 @@ export default function SignUpPage() {
         navigate("/");
       })
       .catch(() => {
+        alert(
+          "Ocorreu algum erro ao cadastrar essa conta, tente novamente mais tarde com um outro email"
+        );
         setIsDisabled(false);
       });
   }
