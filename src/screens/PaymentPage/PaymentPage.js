@@ -18,7 +18,7 @@ export default function PaymentPage() {
   let tokenLocal = "";
   if (JSON.parse(localStorage.getItem("userLocal"))) {
     const auth = JSON.parse(localStorage.getItem("userLocal"));
-    tokenLocal = auth.token;
+    tokenLocal = auth.token.token;
   }
 
   const navigate = useNavigate();
@@ -56,7 +56,8 @@ export default function PaymentPage() {
   });
 
   if (tokenLocal.length === 0) {
-    return <Navigate to="/" replace={true} />;
+    alert("Você precisa estar logado para comprar");
+    return <Navigate to="/login" replace={true} />;
   } else {
     return (
       <View>
