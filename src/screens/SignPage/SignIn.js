@@ -45,45 +45,45 @@ export default function SignInPage() {
       });
   }
 
-  /*   if (auth) {
+  if (auth) {
     return <Navigate to="/home" />;
-  } else { */
-  return (
-    <Corpo>
-      <Wallpaper src={wallpaper}></Wallpaper>
-      <ContainerLogo onClick={() => navigate("/home")}>
-        <TittleLogo>META SHOES </TittleLogo>
-        <SubTittleLogo>E-commerce edition</SubTittleLogo>
-      </ContainerLogo>
-      <Login onSubmit={fazerLogin}>
-        <Titulo>Entrar</Titulo>
-        <input
-          placeholder="E-mail"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          disabled={isDisabled}
-        />
-        <input
-          placeholder="Senha"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          disabled={isDisabled}
-        />
-        <button type="submit" disabled={isDisabled}>
-          <div>Entrar</div>
-        </button>
+  } else {
+    return (
+      <Corpo>
+        <Wallpaper src={wallpaper}></Wallpaper>
+        <ContainerLogo onClick={() => navigate("/home")}>
+          <TittleLogo>META SHOES </TittleLogo>
+          <SubTittleLogo>E-commerce edition</SubTittleLogo>
+        </ContainerLogo>
+        <Login onSubmit={fazerLogin}>
+          <Titulo>Entrar</Titulo>
+          <input
+            placeholder="E-mail"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            disabled={isDisabled}
+          />
+          <input
+            placeholder="Senha"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            disabled={isDisabled}
+          />
+          <button type="submit" disabled={isDisabled}>
+            <div>Entrar</div>
+          </button>
 
-        <Link to={`/cadastro`}>
-          <Cadastro disabled={isDisabled}>
-            Novo por aqui? <h2>Cadastre-se agora.</h2>
-          </Cadastro>
-        </Link>
-      </Login>
-    </Corpo>
-  );
-  /* } */
+          <Link to={`/cadastro`}>
+            <Cadastro disabled={isDisabled}>
+              Novo por aqui? <h2>Cadastre-se agora.</h2>
+            </Cadastro>
+          </Link>
+        </Login>
+      </Corpo>
+    );
+  }
 }

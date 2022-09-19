@@ -44,66 +44,69 @@ export default function SignUpPage() {
         navigate("/");
       })
       .catch(() => {
+        alert(
+          "Ocorreu algum erro ao cadastrar essa conta, tente novamente mais tarde com um outro email"
+        );
         setIsDisabled(false);
       });
   }
 
-  /*   if (auth) {
+  if (auth) {
     return <Navigate to="/home" />;
-  } else { */
-  return (
-    <Corpo>
-      <Wallpaper src={wallpaper}></Wallpaper>
-      <ContainerLogo onClick={() => navigate("/home")}>
-        <TittleLogo>META SHOES </TittleLogo>
-        <SubTittleLogo>E-commerce edition</SubTittleLogo>
-      </ContainerLogo>
+  } else {
+    return (
+      <Corpo>
+        <Wallpaper src={wallpaper}></Wallpaper>
+        <ContainerLogo onClick={() => navigate("/home")}>
+          <TittleLogo>META SHOES </TittleLogo>
+          <SubTittleLogo>E-commerce edition</SubTittleLogo>
+        </ContainerLogo>
 
-      <Login onSubmit={fazerCadastro}>
-        <Titulo>Cadastrar</Titulo>
-        <input
-          placeholder="Qual o seu lindo name?"
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          disabled={isDisabled}
-        />
-        <input
-          placeholder="E o seu email?"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-          disabled={isDisabled}
-        />
-        <input
-          placeholder="Crie uma senha boa aí :)"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          disabled={isDisabled}
-        />
-        <input
-          placeholder="E pra finalizar, confirme a senha"
-          type="password"
-          value={confpassword}
-          onChange={(e) => setConfpassword(e.target.value)}
-          required
-          disabled={isDisabled}
-        />
-        <button type="submit" disabled={isDisabled}>
-          <div>Cadastrar</div>
-        </button>
+        <Login onSubmit={fazerCadastro}>
+          <Titulo>Cadastrar</Titulo>
+          <input
+            placeholder="Qual o seu lindo name?"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            disabled={isDisabled}
+          />
+          <input
+            placeholder="E o seu email?"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            disabled={isDisabled}
+          />
+          <input
+            placeholder="Crie uma senha boa aí :)"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            disabled={isDisabled}
+          />
+          <input
+            placeholder="E pra finalizar, confirme a senha"
+            type="password"
+            value={confpassword}
+            onChange={(e) => setConfpassword(e.target.value)}
+            required
+            disabled={isDisabled}
+          />
+          <button type="submit" disabled={isDisabled}>
+            <div>Cadastrar</div>
+          </button>
 
-        <Link to={`/`}>
-          <Cadastro disabled={isDisabled}>
-            Já tem uma conta? <h2>Faça o login.</h2>
-          </Cadastro>
-        </Link>
-      </Login>
-    </Corpo>
-  );
-  /* } */
+          <Link to={`/`}>
+            <Cadastro disabled={isDisabled}>
+              Já tem uma conta? <h2>Faça o login.</h2>
+            </Cadastro>
+          </Link>
+        </Login>
+      </Corpo>
+    );
+  }
 }
