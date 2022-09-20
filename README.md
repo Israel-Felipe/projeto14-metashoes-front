@@ -1,26 +1,27 @@
-# My Wallet
+# MetaShoes
 
-A responsive website that simulates a wallet to help you control your finances.
+A responsive website that simulates a e-commerce of shoes to Metaverse.
 
 //<center><img src="https://user-images.githubusercontent.com/103606213/187323116-c5047013-2a62-4ef8-b4ac-57f1ff28a966.gif"></center>
 
-//Try it out now at (link)
+//Try it out now at projeto14-metashoes-front.vercel.app
 
 ## About this Project
 
-This is a Single-Page Application that simulates a wallet. Below are the implemented features:
+This is a Single-Page Application that simulates a e-commerce. Below are the implemented features:
 
 - Login
 - Sign up
-- Bank extract
-- Bank deposit
-- Show and hide the balance of your wallet
+- HomeScreen
+- Add to cart
+- Remove from cart
+- Buy a shoe
 
 ## Why?
 
 This project was made to be part of my GitHub portfolio.
 
-This web site was my first project full stack! 
+This web site was my first project full stack using MongoDB! 
 
 I will be happy if you can give me some feedback on the code, layout or anything you think could have been better in the project.
 
@@ -39,7 +40,6 @@ The following tools and frameworks were used in the construction of the project:
   <img style='margin: 5px;' src='https://img.shields.io/badge/axios%20-%2320232a.svg?&style=for-the-badge&color=informational'>
 </p>
 - react-loader-spinner
-- sweetalert2
 
 ## How to run
 
