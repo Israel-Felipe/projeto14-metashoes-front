@@ -16,7 +16,7 @@ export const ContainerProducts = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 100px;
-  gap: 30px;
+
   @media only screen and (max-width: 935px) {
     justify-content: center;
   }
@@ -33,6 +33,8 @@ export const ContainerShoes = styled.div`
   cursor: pointer;
   height: 340px;
   position: relative;
+  margin-left: 10px;
+  margin-bottom: 10px;
   &:hover {
     transform: scale(1.1);
   }
