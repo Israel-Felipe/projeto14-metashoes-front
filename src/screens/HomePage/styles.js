@@ -16,7 +16,8 @@ export const ContainerProducts = styled.div`
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 100px;
-
+  gap: 10px;
+  justify-content: center;
   @media only screen and (max-width: 935px) {
     justify-content: center;
   }
@@ -26,19 +27,22 @@ export const ContainerShoes = styled.div`
   background: #b543b9;
   border-radius: 20px;
   padding: 5%;
-  width: 300px;
+  width: 280px;
   display: flex;
   align-items: center;
   flex-direction: column;
   cursor: pointer;
   height: 340px;
   position: relative;
-  margin-left: 10px;
-  margin-bottom: 10px;
   &:hover {
     transform: scale(1.1);
   }
   transition: all 0.2s;
+  @media only screen and (max-width: 935px) {
+    &:hover {
+      transform: none;
+    }
+  }
 `;
 
 export const ImageShoes = styled.img`
