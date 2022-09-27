@@ -13,6 +13,8 @@ import {
   ContainerLogo,
 } from "./styles";
 
+import Swal from "sweetalert2";
+
 export default function SignUpPage() {
   const navigate = useNavigate();
   const auth = JSON.parse(localStorage.getItem("userLocal"));
@@ -28,7 +30,11 @@ export default function SignUpPage() {
     setIsDisabled(true);
 
     if (password !== confpassword) {
-      alert("Você digitou algo diferente na confirmação da senha.");
+      Swal.fire(
+        "Você digitou algo diferente na confirmação da senha.",
+        "erro",
+        "error"
+      );
       setIsDisabled(false);
       return;
     }
@@ -44,9 +50,12 @@ export default function SignUpPage() {
         navigate("/");
       })
       .catch(() => {
-        alert(
-          "Ocorreu algum erro ao cadastrar essa conta, tente novamente mais tarde com um outro email"
+        Swal.fire(
+          "Ocorreu algum erro ao cadastrar essa conta, tente novamente mais tarde com um outro email",
+          "erro",
+          "error"
         );
+
         setIsDisabled(false);
       });
   }

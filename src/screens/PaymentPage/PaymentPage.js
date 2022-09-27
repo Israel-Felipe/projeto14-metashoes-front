@@ -9,6 +9,8 @@ import creditCard from "../../assets/img/credit-card.svg";
 
 import { Button, Container, CreditCard, Form, View, ViewWhite } from "./styles";
 
+import Swal from "sweetalert2";
+
 export default function PaymentPage() {
   const [numberCard, setNumberCard] = React.useState("");
   const [dataValid, setDataValid] = React.useState("");
@@ -28,7 +30,7 @@ export default function PaymentPage() {
       let response = await getProductFromCar(tokenLocal);
       setListOfProducts(response.data);
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      Swal.fire(`${error.response.data.message}`, "erro!", "error");
     }
   }
 
@@ -40,13 +42,16 @@ export default function PaymentPage() {
       name.length === 0 ||
       listOfProducts.length === 0
     ) {
-      alert("Preencha todas informações");
+      Swal.fire("Preencha todas informações", "erro!", "error");
       return;
     }
     let produtos = [];
     produtos = listOfProducts.map((value) => value.name);
-    alert(
-      `Parabéns ${name}!! Você comprou na Meta Shoes! Suas compras foram: ${produtos}`
+
+    Swal.fire(
+      `Parabéns ${name}!! Você comprou na Meta Shoes! Suas compras foram: ${produtos}`,
+      "sucesso!",
+      "success"
     );
     navigate("/home");
   }
@@ -56,7 +61,8 @@ export default function PaymentPage() {
   });
 
   if (tokenLocal.length === 0) {
-    alert("Você precisa estar logado para comprar");
+    Swal.fire("Você precisa estar logado para comprar", "erro!", "error");
+
     return <Navigate to="/login" replace={true} />;
   } else {
     return (

@@ -13,6 +13,8 @@ import {
 
 import { logoutService } from "../../services/requests";
 
+import Swal from "sweetalert2";
+
 export default function TopBar() {
   const navigate = useNavigate();
   const auth = JSON.parse(localStorage.getItem("userLocal"));
@@ -23,18 +25,26 @@ export default function TopBar() {
   }
 
   function logout() {
-    const confirm = window.confirm("Tem certeza que deseja sair?");
-
-    if (confirm) {
-      logoutService()
-        .then(() => {
-          localStorage.removeItem("userLocal");
-          navigate("/home");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
+    Swal.fire({
+      title: "Tem certeza que deseja sair?",
+      text: "Você pode fazer login novamente depois",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Sim, quero sair!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        logoutService()
+          .then(() => {
+            localStorage.removeItem("userLocal");
+            navigate("/home");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    });
   }
 
   return (

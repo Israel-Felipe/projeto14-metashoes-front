@@ -13,6 +13,8 @@ import {
   ContainerLogo,
 } from "./styles";
 
+import Swal from "sweetalert2";
+
 export default function SignInPage() {
   const navigate = useNavigate();
   const auth = JSON.parse(localStorage.getItem("userLocal"));
@@ -37,11 +39,26 @@ export default function SignInPage() {
         const userEmail = res.data.user.email;
         const infoJSON = JSON.stringify({ token, userName, userEmail });
         localStorage.setItem("userLocal", infoJSON);
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 3000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.addEventListener("mouseenter", Swal.stopTimer);
+            toast.addEventListener("mouseleave", Swal.resumeTimer);
+          },
+        });
 
+        Toast.fire({
+          icon: "success",
+          title: "Login realizado com sucesso",
+        });
         navigate("/home");
       })
       .catch(() => {
-        alert("Login ou password incorretos");
+        Swal.fire("Login ou password incorretos", "erro", "error");
         setIsDisabled(false);
       });
   }

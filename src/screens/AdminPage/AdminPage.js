@@ -20,6 +20,8 @@ import {
 import loadingGif from "../../assets/image/loading-gif.gif";
 import CadastrarProduto from "./CadastrarProduto";
 
+import Swal from "sweetalert2";
+
 export default function HomePage() {
   const auth = JSON.parse(localStorage.getItem("userLocal"));
   const [listProducts, setListProducts] = React.useState([]);
@@ -31,7 +33,7 @@ export default function HomePage() {
       setListProducts(response.data);
       setDelayDeploy(true);
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      Swal.fire(`${error.response.data.message}`, "erro!", "error");
     }
   }
 
@@ -39,10 +41,10 @@ export default function HomePage() {
     console.log(name);
     try {
       await deleteProduct(name);
-      alert("Produto deletado");
+      Swal.fire("Produto deletado", "sucesso!", "success");
       window.location.reload();
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      Swal.fire(`${error.response.data.message}`, "erro!", "error");
     }
   }
 
@@ -51,7 +53,8 @@ export default function HomePage() {
   }, []);
 
   if (auth.userEmail !== "admin@metashoes.com") {
-    alert("Tu não é admin, não inventa moda");
+    Swal.fire("Tu não é admin, não inventa moda", "erro!", "error");
+
     return <Navigate to="/home" />;
   } else {
     return (
