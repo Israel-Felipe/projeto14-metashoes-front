@@ -19,6 +19,8 @@ import {
 
 import loadingGif from "../../assets/image/loading-gif.gif";
 
+import Swal from "sweetalert2";
+
 export default function HomePage() {
   const [listProducts, setListProducts] = React.useState([]);
   const [delayDeploy, setDelayDeploy] = React.useState(false);
@@ -29,7 +31,7 @@ export default function HomePage() {
       setListProducts(response.data);
       setDelayDeploy(true);
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      Swal.fire(`${error.response.data.message}`, "erro!", "error");
     }
   }
 

@@ -31,6 +31,8 @@ import { ThreeDots } from "react-loader-spinner";
 
 import loadingGif from "../../assets/image/loading-gif.gif";
 
+import Swal from "sweetalert2";
+
 export default function MarketPage() {
   const [listOfProducts, setListOfProducts] = React.useState([]);
   const [totalPrice, setTotalPrice] = React.useState(0);
@@ -55,7 +57,7 @@ export default function MarketPage() {
       setTotalPrice(priceTotal);
       setDelayDeploy(true);
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      Swal.fire(`${error.response.data.message}`, "erro!", "error");
     }
   }
 
@@ -65,8 +67,24 @@ export default function MarketPage() {
       await removeProductFromCar(id, tokenLocal);
       getItemsCar(tokenLocal);
       setLoading(false);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: "Item deletado com sucesso",
+      });
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      Swal.fire(`${error.response.data.message}`, "erro!", "error");
       setLoading(false);
     }
   }
@@ -76,7 +94,7 @@ export default function MarketPage() {
   }, [tokenLocal]);
 
   if (tokenLocal.length === 0) {
-    alert("Você precisa estar logado para comprar");
+    Swal.fire("Você precisa estar logado para comprar", "erro!", "error");
     return <Navigate to="/login" replace={true} />;
   } else {
     return (

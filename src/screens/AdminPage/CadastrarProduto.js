@@ -2,6 +2,8 @@ import { useState } from "react";
 import { postProduct } from "../../services/requests.js";
 import { Formulario } from "./styles";
 
+import Swal from "sweetalert2";
+
 export default function CadastrarProduto() {
   const [name, setName] = useState("");
   const [img, setImg] = useState("");
@@ -20,11 +22,11 @@ export default function CadastrarProduto() {
 
     postProduct(cadastroAPI)
       .then(() => {
-        alert("Produto Cadastrado!");
+        Swal.fire("Produto Cadastrado!", "sucesso!", "success");
         window.location.reload();
       })
       .catch(() => {
-        alert("Deu algo errado");
+        Swal.fire("Deu algo errado", "erro!", "error");
       });
   }
 

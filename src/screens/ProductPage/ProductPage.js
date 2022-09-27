@@ -30,6 +30,8 @@ import {
 
 import { ThreeDots } from "react-loader-spinner";
 
+import Swal from "sweetalert2";
+
 export default function ProductPage() {
   const [size, setSize] = React.useState("");
   const [color, setColor] = React.useState("");
@@ -50,7 +52,7 @@ export default function ProductPage() {
 
   async function addToCar(size, color, quantity, id_Product) {
     if (!size || !color || !quantity) {
-      alert("Selecione a cor, quantidade e cor do tênis");
+      Swal.fire("Selecione a cor, quantidade e cor do tênis", "erro!", "error");
       return;
     }
 
@@ -64,10 +66,26 @@ export default function ProductPage() {
     };
     try {
       let response = await addProductToCar(body, tokenLocal);
-      alert(`${response.data.message}`);
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener("mouseenter", Swal.stopTimer);
+          toast.addEventListener("mouseleave", Swal.resumeTimer);
+        },
+      });
+
+      Toast.fire({
+        icon: "success",
+        title: `${response.data.message}`,
+      });
+
       setLoading(false);
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      Swal.fire(`${error.response.data.message}`, "erro!", "error");
       setLoading(false);
     }
   }
@@ -81,7 +99,7 @@ export default function ProductPage() {
       setImg(promise.data.img);
       setDescription(promise.data.description);
     } catch (error) {
-      alert(`${error.response.data.message}`);
+      Swal.fire(`${error.response.data.message}`, "erro!", "error");
     }
   }
 
@@ -90,7 +108,8 @@ export default function ProductPage() {
   }, [idProduct]);
 
   if (tokenLocal.length === 0) {
-    alert("Você precisa estar logado para comprar");
+    Swal.fire("Você precisa estar logado para comprar", "erro!", "error");
+
     return <Navigate to="/login" replace={true} />;
   } else {
     return (
